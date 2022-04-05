@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+      "target": "es5",                          
+      "module": "commonjs",                    
+      "lib": ["es2020","DOM"],                     
+      "allowJs": true,
+      "outDir": "build",                          
+      "rootDir": "src",
+      "strict": true,         
+      "noImplicitAny": true,
+      "esModuleInterop": true,
+      "resolveJsonModule": true
+    },
+    "include": [
+      "src/**/*",
+      "src/database/migrations/*.*",
+      "src/database/*.*"
+  ],"exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+]}
+  

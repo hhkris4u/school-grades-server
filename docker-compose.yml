@@ -1,0 +1,29 @@
+version: "3"
+services:
+  database:
+    image: mysql
+    network_mode: bridge
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_USER: ${MYSQL_USER}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - ${MYSQL_PORT}:${MYSQL_PORT}
+  app:
+    build: .
+    command: run dev
+    depends_on:
+      - database
+    links:
+      - database
+    env_file: .env
+    image: ${SERVICE_NAME}
+    network_mode: bridge
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - ./:/code
+      - /code/node_modules
+
+
